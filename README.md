@@ -1,14 +1,34 @@
-# astrbot-plugin-helloworld
+# AstrBot 今日运势插件
 
-AstrBot 插件模板 / A template plugin for AstrBot plugin feature
+本插件由 `星星旁の旷野` 与 `Alin` 开发，适用于 AstrBot 的今日运势功能。通过 `/jrys` 指令可以获取当天的运势信息，并返回带按钮的 Markdown 消息。
 
-> [!NOTE]
-> This repo is just a template of [AstrBot](https://github.com/AstrBotDevs/AstrBot) Plugin.
-> 
-> [AstrBot](https://github.com/AstrBotDevs/AstrBot) is an agentic assistant for both personal and group conversations. It can be deployed across dozens of mainstream instant messaging platforms, including QQ, Telegram, Feishu, DingTalk, Slack, LINE, Discord, Matrix, etc. In addition, it provides a reliable and extensible conversational AI infrastructure for individuals, developers, and teams. Whether you need a personal AI companion, an intelligent customer support agent, an automation assistant, or an enterprise knowledge base, AstrBot enables you to quickly build AI applications directly within your existing messaging workflows.
+## 功能简介
 
-# Supports
+- 支持 `/jrys` 指令
+- 支持别名 `今日运势`、`运势`
+- 返回今日运势摘要、幸运星、签文等信息
+- 自动加载本地 `jrys.json` 运势数据
+- 随机展示一张网络图片
+- 发送带按钮的 Markdown 消息，支持一键重新查询和打开菜单
 
-- [AstrBot Repo](https://github.com/AstrBotDevs/AstrBot)
-- [AstrBot Plugin Development Docs (Chinese)](https://docs.astrbot.app/dev/star/plugin-new.html)
-- [AstrBot Plugin Development Docs (English)](https://docs.astrbot.app/en/dev/star/plugin-new.html)
+## 使用说明
+
+在群聊中发送以下任意指令：
+
+- `/jrys`
+- `今日运势`
+- `运势`
+
+插件会根据当前日期和用户 ID 生成今日运势，并返回结果。
+
+## 插件结构
+
+- `main.py`：插件主入口，处理指令并生成消息
+- `metadata.yaml`：插件元信息
+- `README.md`：插件说明文档
+- `jrys.json`：今日运势数据源文件（需与插件一起放在 `data/plugins/astrbot_plugin_yunshi/` 下）
+
+## 备注
+
+- 插件中的图片来源于网络，仅供娱乐参考
+- 运势结果仅用于娱乐，勿过度迷信

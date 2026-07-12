@@ -1,0 +1,17 @@
+{
+  "text": {
+    "description": "要附加在jrys中的文本内容",
+    "type": "list",
+    "default": []
+  },
+  "text_origin": {
+    "description": "今日运势文案来源",
+    "type": "string",
+    "default": "data/plugins/astrbot_plugin_yunshi/jrys.json"
+  },
+  "beta_config": {
+    "description": "是否启用测试版附加文案",
+    "type": "bool",
+    "default": false
+  }
+}
