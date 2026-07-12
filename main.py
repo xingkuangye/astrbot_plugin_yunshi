@@ -160,6 +160,16 @@ class yunshi(Star):
                                     }
                                 },
                                 {
+                                    # 指令按钮：🎲群友老婆 -> /群友老婆
+                                    # 使用权限：所有人
+                                    "render_data": {"label": "🎲群友老婆", "style": 1},
+                                    "action": {
+                                        "type": 2,
+                                        "permission": {"type": 2},
+                                        "data": "/群友老婆"
+                                    }
+                                },
+                                {
                                     # 指令按钮：📋菜单 -> /菜单
                                     # 使用权限：所有人
                                     "render_data": {"label": "📋菜单", "style": 1},
