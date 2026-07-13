@@ -1,8 +1,7 @@
-from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
+from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
-from PIL import Image, ImageFile
-from astrbot.api import logger
 from datetime import datetime, timezone, timedelta
+from PIL import Image, ImageFile
 from botpy.http import Route
 from io import BytesIO
 import urllib.request
