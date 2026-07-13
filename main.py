@@ -33,6 +33,26 @@ class yunshi(Star):
         self.text_origin = config.get("text_origin")
         self.beta_config = config.get("beta_config")
 
+    @filter.command("get_origin_message")
+    async def get_origin_message(self, event: AstrMessageEvent, message_id: int):
+        """[测试]获取 jrys 原始消息内容"""
+        if not self.beta_config:
+            return
+
+        message_str = event.message_str
+        if not "jrys" in message_str:
+            return
+
+        message = await self.get_kv_data(f"jrys.{message_id}originmessage", None)
+        if message is None:
+            yield event.plain_result(f"未找到原始消息内容（ID: {message_id}）。")
+            return
+
+        chain = event.plain_result(f"原始消息内容（ID: {message_id}）：\n\n{message}")
+        # 再手动关掉 markdown
+        chain.use_markdown_ = False
+        yield chain
+
     # 处理今日运势指令
     # @param event AstrMessageEvent 消息事件对象
     # @return MessageEventResult 消息事件处理结果
@@ -125,7 +145,6 @@ class yunshi(Star):
         if self.beta_config:
             msg_id = await self.get_kv_data("now msg_id", 0) + 1
             await self.put_kv_data("now msg_id", msg_id)
-            await self.put_kv_data(str(msg_id) + "originmessage", message)
             message += f"""
 ***
 > 您当前正在使用测试版本的AL_1S机器人
@@ -133,6 +152,8 @@ class yunshi(Star):
 > 如果您看到了不良信息，请点击<qqbot-cmd-input text="/举报 jrys.{msg_id} [在这里填写你想要举报的原因]" show="举报" reference="true" />
 > 感谢您的支持~
 > _测试ID：{openid}_"""
+            await self.put_kv_data("jrys." + str(msg_id) + "originmessage", message)
+
         
 
         # 构造消息 payload，用于发送带按钮的 Markdown 消息 -> payload
